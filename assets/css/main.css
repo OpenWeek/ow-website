@@ -116,7 +116,7 @@ hr {
    Wrap Sections
    ========================================================================== */
 #headerwrap {
-  background-color: #00AD33;
+  background-color: #8A2BE2;
   color: white;
   display: block;
   padding-top: 50px;
@@ -130,7 +130,7 @@ hr {
 }
 #headerwrap a:hover,
 #headerwrap a:focus {
-  color: #f1e493;
+  color: #cfbb38;
 }
 #headerwrap h1,
 #headerwrap h2,
