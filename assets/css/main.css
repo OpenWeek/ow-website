@@ -1,6 +1,11 @@
 @import url(//fonts.googleapis.com/css?family=Yanone+Kaffeesatz:300);
 #plugin_html,#plugin_body { height: 100%; margin: 0px; padding: 0px; }
 
+
+li {
+  text-align: left;
+}
+
 body {
   background-color: #f2f2f2;
   font-family: "Lato", "sans-serif";
