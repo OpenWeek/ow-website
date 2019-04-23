@@ -61,7 +61,42 @@
         <div class="row centered">
             <div class="col-lg-12">
                 <h3>Présentation du projet</h3>
-                  <h4>A venir !</h4>
+                  <p>En 2018, nous avons réalisé une petite "station météo" sur la plateform ARM Raspberry Pi. Les objectifs fixés étaient :
+                      <ul>
+                        <li>d'apprendre à utiliser les GPIO pour capturer des données venant de capteurs extérieurs en utilisant le protocole I2C.</li>
+                        <li>de stocker efficacement les données générées dans des bases de données appropriées. En l'occurence, nous avons utilisé des BDD <a target="_blank" href="https://oss.oetiker.ch/rrdtool/"><b>RRDTOOL</b></a>.</li>
+                        <li>de créer une application une application web afin de présenter les données. Pour ce faire, nous avons utilisé, entre autres: 
+                          <ul>
+                            <li><a href="http://webpy.org/" target="_blank"><b>Web.py</b></a>, un simple framework web Python afin de créer dynamiquement les pages web nécéssaires.</li>
+                            <li><a href="https://www.lighttpd.net/" target="_blank"><b>Lighttpd</b></a>, un serveur HTTP statique très léger afin de présenter tous les fichiers web statiques.</li>
+                            <li><a href="http://jinja.pocoo.org/" target="_blank"><b>Jinja2</b></a>, un template engine très puissant pour Python.</li>
+                            <li><a href="https://mqtt.org/" target="_blank">Le protocole <b>MQTT</b></a>, un protocole de type <em>M2M/IoT</em>.</li>
+                            <li><a href="https://mosquitto.org/" target="_blank"><b>Mosquitto</b></a>, un broker <em>MQTT</em>.</li>
+                          </ul>
+                        </li>
+                      </ul>
+                  </p>
+
+                  <p><b>NB: tous les logiciels externes utilisés sont Open Source !</b></p>
+
+                  <p>
+                    En réalité, ce projet était une première approche pour un projet plus conséquent ! Aussi, après cette première expérience, nous allons créer un data-logger software.
+
+                    Il s'agira d'un programme chargé de collecter/stocker/afficher en toute généralité les données collectées depuis un réseau de capteurs de type <em>IoT</em>.
+
+                    Nous nous concentrerons sur les apsects suivants :
+                  </p>
+
+                    <ul>
+                      <li>Sécurité</li>
+                      <li>Simplicité</li>
+                      <li>Facilité d'usage</li>
+                    </ul>
+
+                  <p>
+                    Pour ce faire, nous allons créer une interface web permettant de contrôler tous les aspects du logiciel. Nous pouvons citer, entre autres, la configuration du point d'accès WiFi, la configuration du broker MQTT, une couche d'authentification et d'autorisation, le paramétrage du stockage des données, l'ajout de nouveaux clients, etc
+                  </p>
+
 
                 <h3>Ce que vous aurez l'occasion de faire</h3>
                   <h4>A venir !</h4>
