@@ -43,9 +43,9 @@
         <!--/.nav-collapse -->
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li role="presentation"><a href="index.html">Home</a></li>
+              <li role="presentation" class="active"><a href="index.html">Home</a></li>
               <li role="presentation"><a href="syllabus.html">Syllabus en ligne</a></li>
-              <li role="presentation" class="active"><a href="rpi.html">Raspberry Pi</a></li>
+              <li role="presentation"><a href="rpi.html">Raspberry Pi</a></li>
               <li role="presentation"><a href="meta.html">L'autre côté de l'Open Source</a></li>
               <li role="presentation"><a href="plugins.html">Participer à un projet existant</a></li>
             </ul>
@@ -82,27 +82,80 @@
                   <p>
                     En réalité, ce projet était une première approche pour un projet plus conséquent ! Aussi, après cette première expérience, nous allons créer un data-logger software.
 
-                    Il s'agira d'un programme chargé de collecter/stocker/afficher en toute généralité les données collectées depuis un réseau de capteurs de type <em>IoT</em>.
-
-                    Nous nous concentrerons sur les apsects suivants :
+                    Il s'agira d'un programme chargé de collecter/stocker/afficher en toute généralité les données collectées depuis un réseau de capteurs de type <em>IoT</em> (clients) dont voici les <b>guidelines</b> :
                   </p>
 
                     <ul>
+                      <li>Multi utilisateurs</li>
+                      <p>Il existe différents types d'utilisateurs, chacun ayant des droits spécifiques et configurables</p>
                       <li>Sécurité</li>
-                      <li>Simplicité</li>
-                      <li>Facilité d'usage</li>
-                    </ul>
+                        <ul>
+                          <li>Authentification et autorisation des utilisateurs</li>
+                          <li>Authentification et autorisation des clients</li>
+                            <p>Les clients doivent être connus et acceptés par le système pour pouvoir s'y connecter</p>
+                          <li>Collection des données</li>
+                            <p>Les données ne sont pas lisible en clair lorsqu'elles transitent sur le réseau</p>
+                          <li>Stockage des données</li>
+                            <p>Les opérations telles que ajout / modification / suppression de bases de données ne sont pas accessibles à n'importe quel utilisateur</p>
 
+                          <li>Affichage des données</li>
+                            <p>L'accès aux pages affichant les données dépend des droits des utilisateurs</p>
+                        </ul>
+
+                      <li>Fiabilité</li>
+                        <ul>
+                          <li>Fiabilité des services</li>
+                            <p>Les services sont toujours opérationnels, pour ce faire de la redondance dans l'existence des services est nécessaire</p>
+                          <li>Fiabilité du stockage des données</li>
+                            <p>Les données stockées en DB sont permanantes et résistantes au pannes hardware</p>
+                          <li>Fiabilité des clients</li>
+                            <p>Les clients étant autonomes (ex: sur batterie), le système doit connaitre en temps réel leur état et détecter s'ils ne répondent pas normalement</p>
+                        </ul>
+                      <li>Simplicité</li>
+                        <ul>
+                          <li>L'ajout d'un client doit être rapide</li>
+                            <p><em>En tant qu'utilisateur, je veux ouvrir une page web pour ajouter une plateforme WiFi ESP8266, choisir dans une liste les capteurs BME280 et TSL2561 que j'utilise, la fréquence de capture des données, la localisation du capteur et appuyer sur un bouton pour flasher le code sur la plateforme de telle manière à ce qu'il ne me reste plus qu'à brancher une batterie dessus et la placer à l'endroit désiré.</em></p>
+                    </ul>
                   <p>
-                    Pour ce faire, nous allons créer une interface web permettant de contrôler tous les aspects du logiciel. Nous pouvons citer, entre autres, la configuration du point d'accès WiFi, la configuration du broker MQTT, une couche d'authentification et d'autorisation, le paramétrage du stockage des données, l'ajout de nouveaux clients, etc
+                  Bien que le projet se veut extrêmement générique, le temps est limité et nous ne pourrons pas tout faire en une semaine. Aussi, voici les limitations que nous imposons pour cette année : 
                   </p>
 
+                  <ul>
+                    <li>Le média de transport physique sera uniquement le WiFi</li>
+                    <li>L'application web, le stockage des données et les services associés seront tous rassemblés sur une seule plateforme, en l'occurence un Raspberry Pi</li>
+                    <li>Les "clients" seront des plateformes WiFi ESP8266 flashées avec un firmware NodeMCU</li>
+                    <li>Les capteurs supportés seront limités. Une liste complète viendra plus tard</li>
+                  </ul>
 
-                <h3>Ce que vous aurez l'occasion de faire</h3>
-                  <h4>A venir !</h4>
+                <p>
+                Pour rester pratico-pratique, voici les services que nous allons hoster sur le Raspberry Pi :</p>
+                <ul>
+                  <li>Un Acces Point software (ex: hostapd)</li>
+                  <li>Un serveur DNS/DHCP léger (ex: dnsmasq)</li>
+                  <li>Un broker MQTT (ex: mosquitto)</li>
+                  <li>L'application web (via lighttpd et un framework web.py / flask)</li>
+                </ul>
 
-                <h3>Ce que vous apprendrez</h3>
-                  <h4>A venir !</h4>
+                    <h3>Ce que vous aurez l'occasion de faire</h3>
+
+                  <p>Le programme étant relativement chargé et l'expérience ayant fait ses preuves en 2018, le projet sera divisé en différents aspects. Aussi, nous diviserons les participants en différents sous-groupes pour réaliser les tâches suivantes : <p>
+
+
+                    <h4>Front End</h4>
+                    <ul>
+                      <li>Réaliser les interfaces graphiques pour configurer les différents services. Nous fournirons la liste précise des options qui doivent être configurables.</li>
+                      <li>Réaliser les pages d'administrations pour la gestion des utilisateurs et des clients.</li>
+                      <li>Réaliser les pages d'affichages des données</li>
+                    </ul>
+                    <h4>Back End</h4>
+                    <ul>
+                      <li>Faire le lien entre les interfaces graphiques et les fichiers de configuration des services.</li>
+                      <li>Gérer l'ajout / suppression / stockage des utilisateurs</li>
+                      <li>Gérer l'ajout / suppression de clients ainsi que l'impact sur la configuration des services</li>
+                      <li>Générer automatiquement le firmware et le code à flasher sur un ESP8266 en fonction des données entrées via l'interface web</li>
+                    </ul>
+
+                    <p>Nous fournirons un template de base pour le projet mais les idées externes sont toujours les bienvenues ! Vous aurez l'occasion de modifier et définir tous les points de conception tant qu'ils restent dans les guidelines définies sur cette page</p>
 
 		        </div>
         </div>
