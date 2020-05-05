@@ -131,11 +131,11 @@ hr {
   height: 100%;
 }
 #headerwrap a {
-  color: #ffffff;
+  color: #cfbb38;
 }
 #headerwrap a:hover,
 #headerwrap a:focus {
-  color: #cfbb38;
+  color: #cf6b00;
 }
 #headerwrap h1,
 #headerwrap h2,
